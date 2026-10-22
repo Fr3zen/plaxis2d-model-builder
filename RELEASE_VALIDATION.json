@@ -1,0 +1,16 @@
+{
+  "status": "offline_checks_passed",
+  "version": "0.1.0-beta.1",
+  "date": "2026-10-22",
+  "scope": "local release preparation only; not published",
+  "excavation_tests": {"run": 54, "passed": 54, "failed": 0},
+  "borehole_tests": {"run": 13, "passed": 12, "skipped": 1, "failed": 0, "skip_reason": "Private original Section1 workbook is intentionally absent"},
+  "public_template": "Synthetic demo; three boreholes, three layers, AUTO interfaces",
+  "public_template_preview": "Five phase images and HTML generated in offline smoke",
+  "cmd_help_entries": "both passed on the configured development machine",
+  "xlsx_rendering": "both templates rendered; excavation stage and interface sheets visually inspected",
+  "native_build_retested": false,
+  "native_calculation_retested": false,
+  "github_workflow": "prepared; not executed on GitHub",
+  "third_party_binaries_bundled": false
+}

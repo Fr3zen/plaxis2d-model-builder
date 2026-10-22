@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "基坑建模演示_非工程参数",
+    "bounds": [
+      0,
+      -20,
+      40,
+      0
+    ],
+    "start_y": 0,
+    "initial_water": [
+      [
+        0,
+        -1
+      ],
+      [
+        40,
+        -1
+      ]
+    ],
+    "flow_boundaries": {
+      "BoundaryXMin": "Open",
+      "BoundaryXMax": "Open",
+      "BoundaryYMin": "Closed",
+      "BoundaryYMax": "Open"
+    }
+  },
+  "geology": {
+    "name": "demo",
+    "units": "m",
+    "layers": [
+      {
+        "id": "layer_1",
+        "name": "填土",
+        "color": "#c5a36a"
+      },
+      {
+        "id": "layer_2",
+        "name": "黏土",
+        "color": "#a88173"
+      },
+      {
+        "id": "layer_3",
+        "name": "砂土",
+        "color": "#decd91"
+      }
+    ],
+    "boreholes": [
+      {
+        "id": "B1",
+        "x": 0,
+        "ground": 0,
+        "bottoms": [
+          -5,
+          -12,
+          -20
+        ]
+      },
+      {
+        "id": "B2",
+        "x": 40,
+        "ground": 0,
+        "bottoms": [
+          -5,
+          -5,
+          -20
+        ]
+      }
+    ]
+  },
+  "layer_materials": {
+    "layer_1": "SOIL",
+    "layer_2": "SOIL",
+    "layer_3": "SOIL"
+  },
+  "materials": [
+    {
+      "id": "SOIL",
+      "kind": "soil",
+      "properties": {
+        "SoilModel": "Mohr-Coulomb",
+        "DrainageType": "Drained",
+        "gammaUnsat": 18,
+        "gammaSat": 20,
+        "ERef": 20000,
+        "nu": 0.3,
+        "cref": 10,
+        "phi": 28,
+        "PermHorizontalPrimary": 0.01,
+        "PermVertical": 0.005,
+        "GroundwaterClassificationType": "Standard",
+        "GroundwaterSoilClassStandard": "Fine",
+        "GwUseDefaults": false
+      }
+    },
+    {
+      "id": "WALL",
+      "kind": "plate",
+      "properties": {
+        "MaterialType": "Elastic",
+        "EA1": 10000000,
+        "EI": 80000,
+        "w": 5,
+        "StructNu": 0.2
+      }
+    },
+    {
+      "id": "STRUT",
+      "kind": "anchor",
+      "properties": {
+        "MaterialType": "Elastic",
+        "EA": 1000000,
+        "LSpacing": 3
+      }
+    }
+  ],
+  "walls": [
+    {
+      "id": "LEFT",
+      "x": 10,
+      "top": 0,
+      "bottom": -12,
+      "material": "WALL",
+      "interface_material": "AUTO"
+    },
+    {
+      "id": "RIGHT",
+      "x": 30,
+      "top": 0,
+      "bottom": -12,
+      "material": "WALL",
+      "interface_material": "AUTO"
+    }
+  ],
+  "structures": [
+    {
+      "id": "S1",
+      "kind": "anchor",
+      "y": -1,
+      "material": "STRUT",
+      "prestress": 0
+    }
+  ],
+  "water_regions": [],
+  "hydraulic_plans": [
+    {
+      "id": "H1",
+      "mode": "equivalent_head",
+      "points": [
+        [
+          10,
+          -3
+        ],
+        [
+          30,
+          -3
+        ]
+      ],
+      "head": -3,
+      "seepage": true
+    }
+  ],
+  "leaks": [
+    {
+      "id": "LEAK",
+      "wall": "RIGHT",
+      "top": -1,
+      "bottom": -2,
+      "first": "D1",
+      "last": "E1",
+      "mode": "resistance",
+      "resistance_days": 50
+    }
+  ],
+  "stages": [
+    {
+      "id": "W1",
+      "previous": "INITIAL",
+      "operation": "walls",
+      "duration_days": 0.1,
+      "calculation_type": "Consolidation"
+    },
+    {
+      "id": "D1",
+      "previous": "W1",
+      "operation": "dewater",
+      "duration_days": 0.2,
+      "hydraulic_plan": "H1",
+      "calculation_type": "Consolidation"
+    },
+    {
+      "id": "E1",
+      "previous": "D1",
+      "operation": "excavate",
+      "excavation_y": -2,
+      "duration_days": 1.0,
+      "calculation_type": "Consolidation"
+    },
+    {
+      "id": "S1INSTALL",
+      "previous": "E1",
+      "operation": "support",
+      "structure_ids": [
+        "S1"
+      ],
+      "duration_days": 0.1,
+      "calculation_type": "Consolidation"
+    }
+  ]
+}

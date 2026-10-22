@@ -1,0 +1,19 @@
+name: Offline tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Configure launcher for runner Python
+        shell: python
+        run: |
+          from pathlib import Path
+          import sys
+          p = Path('excavation-builder/run_builder.cmd')
+          p.write_bytes(p.read_bytes().replace(b'E:\\pyt\\python.exe', sys.executable.encode('ascii')))
+      - run: python tools/run_checks.py

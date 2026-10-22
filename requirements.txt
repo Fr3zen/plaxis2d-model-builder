@@ -1,0 +1,3 @@
+# Offline validation and preview environment; install separately from PLAXIS SDK Python.
+shapely>=2.0,<3.0
+matplotlib>=3.5,<4.0

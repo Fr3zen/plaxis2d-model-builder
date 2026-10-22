@@ -1,0 +1,14 @@
+{
+  "name": "three_boreholes_demo",
+  "units": "m",
+  "layers": [
+    {"id": "fill", "name": "填土", "color": "#D7B377"},
+    {"id": "clay", "name": "黏土", "color": "#B78775"},
+    {"id": "sand", "name": "砂土", "color": "#E8D69B"}
+  ],
+  "boreholes": [
+    {"id": "ZK1", "x": 0, "ground": 10, "bottoms": [8, 1, -15]},
+    {"id": "ZK2", "x": 30, "ground": 12, "bottoms": [9, -2, -15]},
+    {"id": "ZK3", "x": 70, "ground": 9, "bottoms": [6, 0, -15]}
+  ]
+}

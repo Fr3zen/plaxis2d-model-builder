@@ -1,0 +1,11 @@
+{
+  "工程": {"parameter":"参数名","value":"参数值"},
+  "地层材料": {"layer_id":"层位编号","material_id":"材料编号"},
+  "材料": {"id":"材料编号","kind":"材料类型","properties":"材料参数（JSON）","dll_path":"本构DLL路径","udsm_parameter_count":"本构参数个数"},
+  "围护结构": {"id":"围护编号","x":"横坐标（m）","top":"墙顶标高（m）","bottom":"墙底标高（m）","material":"板材料编号","interface_material":"界面赋材（AUTO=按土层）"},
+  "支撑与垫层": {"id":"结构编号","kind":"结构类型","y":"安装标高（m）","material":"材料编号","prestress":"预应力（kN）"},
+  "施工阶段": {"id":"阶段编号","previous":"前序阶段编号","operation":"施工操作","calculation_type":"计算类型","duration_days":"阶段历时（天）","excavation_y":"开挖底标高（m）","structure_ids":"安装结构编号（JSON）","hydraulic_plan":"水力方案编号","pore_pressure_type":"孔压生成方式"},
+  "水力方案": {"id":"方案编号","mode":"排水方式","head":"目标总水头（m）","points":"控制线坐标（JSON）","seepage":"启用暴露面排水"},
+  "漏水段": {"id":"漏水段编号","wall":"围护编号","top":"漏水段顶标高（m）","bottom":"漏水段底标高（m）","first":"启用起始阶段","last":"启用结束阶段","mode":"漏水模式","resistance_days":"水力阻力（天）"},
+  "初始水条件": {"region_id":"水分区编号","x_m":"横坐标（m）","head_m":"总水头（m）","polygon":"水分区边界（JSON）"}
+}
